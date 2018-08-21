@@ -1,20 +1,19 @@
 import * as React from 'react';
 import Dropzone, { ImageFile } from 'react-dropzone'
 import Slider from 'react-slick';
-import {arrayMove, SortableContainer, SortableElementProps, SortEnd} from 'react-sortable-hoc';
+import {arrayMove, SortableContainer, SortableElement, SortEnd} from 'react-sortable-hoc';
 import { ComponentBase } from 'resub';
 
 import './App.css';
 import { Image } from "./Image";
 import ImagesStore from './ImagesStore';
-import logo from './logo.svg';
 
 interface AppState {
     images: Image[];
     isEditing: boolean;
 }
 
-interface SortableElementProps {
+interface SortableImageProps {
     image: Image;
 }
 
@@ -36,8 +35,7 @@ class App extends ComponentBase<{}, AppState> {
         return (
             <div className="App">
                 <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to React</h1>
+                    <h1 className="App-title">My carousel</h1>
                 </header>
                 <section className="App-images">
                     <Dropzone className="App-drop-zone" onDrop={this._onDrop}>
@@ -73,7 +71,7 @@ class App extends ComponentBase<{}, AppState> {
     }
 
     private _renderSortableList = () => {
-        const SortableImage = SortableElementProps((props: SortableElementProps) => this._renderImage(props.image));
+        const SortableImage = SortableElement((props: SortableImageProps) => this._renderImage(props.image));
         const SortableList = SortableContainer((props: SortableContainerProps) => {
             const images = props.images.map((image, index) => <SortableImage key={ `image-${index}` } index={ index } image={ image }/>) 
             return (
