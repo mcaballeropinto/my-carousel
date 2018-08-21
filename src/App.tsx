@@ -4,7 +4,8 @@ import Slider from 'react-slick';
 import { ComponentBase } from 'resub';
 
 import './App.css';
-import ImagesStore, { Image } from './ImagesStore';
+import { Image } from "./Image";
+import ImagesStore from './ImagesStore';
 import logo from './logo.svg';
 
 interface AppState {
@@ -56,13 +57,19 @@ class App extends ComponentBase<{}, AppState> {
     private _onDrop = (accepted: ImageFile[], rejected: ImageFile[]) => {
         // TODO: Check for rejected images.
 
-        // TODO: Handle no accepted images scenario.
+        // TODO: Handle no accepted files scenario.
         // TODO: Handle multiple images.
         const image = accepted.length && accepted[0];
-        if (image && image.preview) {
-            ImagesStore.addImage({
-                url: image.preview
-            });
+        if (image) {
+            // TODO: Handle the case when file couldn't be loaded.
+            const reader = new FileReader();
+            reader.onloadend = (fileLoaded: ProgressEvent) => {
+                ImagesStore.addImage({
+                    url: reader.result as string
+                });
+            };
+
+            reader.readAsDataURL(image);
         }
     }
 }
