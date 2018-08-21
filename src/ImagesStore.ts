@@ -6,16 +6,16 @@ export interface Image {
 
 @AutoSubscribeStore
 class ImagesStore extends StoreBase{
-    private images: Image[] = [];
+    private _images: Image[] = [];
 
     @autoSubscribe
     public getImages() {
-        return this.images;
+        return [...this._images];
     }
 
     public addImage(image: Image) {
         console.log(`Image added to the store ${image.url}`);
-        this.images.push(image);
+        this._images.push(image);
         this.trigger();
     }
 }

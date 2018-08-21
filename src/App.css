@@ -1,3 +1,8 @@
+/* TODO: Improve style of the app */
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
 .App {
   text-align: center;
   display: flex;
@@ -24,9 +29,16 @@
   font-size: large;
 }
 
-.Drop-Zone {
+.App-images {
   display: flex;
   align-self: center;
+  align-items: center;
+  flex-direction: column;
+  width: 800px;
+}
+
+.App-drop-zone {
+  display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px 0;
@@ -34,6 +46,14 @@
   border-style: dashed;
   height: 100px;
   width: 400px;
+}
+
+.App-slider {
+  align-self: stretch;
+}
+
+.slick-prev:before, .slick-next:before  {
+  color: gray;
 }
 
 @keyframes App-logo-spin {
