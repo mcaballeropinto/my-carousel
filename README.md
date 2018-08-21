@@ -3,6 +3,13 @@
 ## Description
 This is an example implementation of a carousel of images that allows the user to drag and drop images to it as well as reorder them.
 
+##  Getting started
+1. Run 
+```
+$ npm i && npm start
+```
+2. Open http://localhost:3000/
+
 ## Stack
 Technologies and libraries used:
 - TypeScript
