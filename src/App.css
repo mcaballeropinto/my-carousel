@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -20,6 +22,18 @@
 
 .App-intro {
   font-size: large;
+}
+
+.Drop-Zone {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  border: 1px gray;
+  border-style: dashed;
+  height: 100px;
+  width: 400px;
 }
 
 @keyframes App-logo-spin {
