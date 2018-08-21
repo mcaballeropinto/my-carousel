@@ -34,7 +34,7 @@
   align-self: center;
   align-items: center;
   flex-direction: column;
-  width: 800px;
+  width: 700px;
 }
 
 .App-drop-zone {
@@ -48,8 +48,19 @@
   width: 400px;
 }
 
+.App-button {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.App-sortable-list {
+  list-style: none;
+  padding: 0;
+}
+
 .App-slider {
   align-self: stretch;
+  margin-top: 20px;
 }
 
 .slick-prev:before, .slick-next:before  {

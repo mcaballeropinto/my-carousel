@@ -10,18 +10,25 @@ class ImagesStore extends StoreBase{
     constructor() {
         super();
         
-        this._images = ImagesClient.loadImages();
+        this._images = ImagesClient.load();
     }
 
     @autoSubscribe
-    public getImages() {
+    public getAll() {
         return [...this._images];
     }
 
-    public addImage(image: Image) {
-        console.log(`Image added to the store ${image.url}`);
-        ImagesClient.saveImage(image);
+    public add(image: Image) {
+        console.log(`Image added to the store.`);
+        ImagesClient.save(image);
         this._images.push(image);
+        this.trigger();
+    }
+
+    public reset(images: Image[]) {
+        console.log(`Images reset.`);
+        ImagesClient.reset(images);
+        this._images = images;
         this.trigger();
     }
 }
